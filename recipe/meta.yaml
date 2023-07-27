@@ -1,5 +1,5 @@
 {% set name = "astronomia" %}
-{% set version = "1.2.12" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/astronomia-{{ version }}.tar.gz
-  sha256: ceea4bab8f02a91833cced6787ff049667db4c00ec02b479f148c419190973c5
+  sha256: a6711be1541af0333f778306db6ac209136e9ded7e44ed9a9c5a57b3b9c2fdd6
 
 build:
   entry_points:
@@ -30,7 +30,7 @@ requirements:
     - cltoolbox
     - numpy
     - pandas
-    - toolbox_utils >=3.0.0,<4.0.0
+    - toolbox_utils >=5.0.0,<6.0.0
 
 test:
   imports:
