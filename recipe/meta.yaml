@@ -1,5 +1,5 @@
 {% set name = "astronomia" %}
-{% set version = "3.0.0" %}
+{% set version = "3.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/astronomia-{{ version }}.tar.gz
-  sha256: 7d59ab7ec347b16ef539e4557d891167184e7a75028f06af15c6439ae77fa0a4
+  sha256: 5f5b5e605b894a8b86f44f66f8f8913cf834659e3838d04cbab048d1fc2dc195
 
 build:
   entry_points:
@@ -28,9 +28,23 @@ requirements:
   run:
     - python >=3.8
     - cltoolbox
+    - dateparser
+    - matplotlib-base >=3.3.2
     - numpy
+    - odfpy >=1.4.1
+    - openpyxl >=3.0.7
     - pandas
-    - toolbox_utils >=5.0.0,<6.0.0
+    - pint !=0.21
+    - pint-pandas
+    - pydantic
+    - pytables >=3.6.1
+    - pyxlsb >=1.0.8
+    - scipy
+    - tabulate
+    - typing-extensions
+    - xlrd >=2.0.1
+    - xlsxwriter
+    - python-calamine
 
 test:
   imports:
