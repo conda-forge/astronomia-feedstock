@@ -28,9 +28,23 @@ requirements:
   run:
     - python >=3.8
     - cltoolbox
+    - dateparser
+    - matplotlib-base >=3.3.2
     - numpy
+    - odfpy >=1.4.1
+    - openpyxl >=3.0.7
     - pandas
-    - toolbox_utils >=5.0.0,<6.0.0
+    - pint !=0.21
+    - pint-pandas
+    - pydantic
+    - pytables >=3.6.1
+    - pyxlsb >=1.0.8
+    - scipy
+    - tabulate
+    - typing-extensions
+    - xlrd >=2.0.1
+    - xlsxwriter
+    - python-calamine
 
 test:
   imports:
