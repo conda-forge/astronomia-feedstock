@@ -1,5 +1,5 @@
 {% set name = "astronomia" %}
-{% set version = "3.0.2" %}
+{% set version = "3.0.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/astronomia-{{ version }}.tar.gz
-  sha256: 5f5b5e605b894a8b86f44f66f8f8913cf834659e3838d04cbab048d1fc2dc195
+  sha256: d91aaf2053df33c7d98a56dfba489c9cfc5be56361f46ec9427a2159a02327a6
 
 build:
   entry_points:
@@ -16,7 +16,7 @@ build:
     - cronus = astronomia.apps.cronus:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
