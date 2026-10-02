@@ -9,13 +9,13 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/astronomia-${{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: c6bb28769848bb2f20b1eb92654c440b673dec69db90458386fdc9264840b990
 
 build:
   number: 1
   noarch: python
-  script: ${{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps
   python:
     entry_points:
       - check_perihelion = astronomia.apps.check_perihelion:main
@@ -24,12 +24,12 @@ build:
 
 requirements:
   host:
-    - python ${{ python_min }}
+    - python ${{ python_min }}.*
     - setuptools >=45
     - setuptools-scm >=6.2
     - pip
   run:
-    - python >=${{ python_min }}
+    - python ${{ python_min }}.*
     - cltoolbox
     - dateparser
     - matplotlib-base >=3.3.2
@@ -55,16 +55,16 @@ tests:
         - astronomia
       pip_check: true
       python_version:
-        - ${{ python_min }}
+        - ${{ python_min }}.*
         - "*"
   - requirements:
       run:
         - pip
-        - python ${{ python_min }}
+        - python ${{ python_min }}.*
     script:
-      - solstice --help
       - check_perihelion --help
       - cronus --help
+      - solstice --help
 
 about:
   summary: Library for calculation of ephemeris and other astronomical calculations
