@@ -1,0 +1,78 @@
+schema_version: 1
+
+context:
+  name: astronomia
+  version: "3.0.5"
+  python_min: "3.10"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/astronomia-${{ version }}.tar.gz
+  sha256: c6bb28769848bb2f20b1eb92654c440b673dec69db90458386fdc9264840b990
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - check_perihelion = astronomia.apps.check_perihelion:main
+      - cronus = astronomia.apps.cronus:main
+      - solstice = astronomia.apps.solstice:main
+
+requirements:
+  host:
+    - python ${{ python_min }}
+    - setuptools >=45
+    - setuptools-scm >=6.2
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - cltoolbox
+    - dateparser
+    - matplotlib-base >=3.3.2
+    - numpy
+    - odfpy >=1.4.1
+    - openpyxl >=3.0.7
+    - pandas
+    - pint !=0.21
+    - pint-pandas
+    - pydantic
+    - pytables >=3.6.1
+    - pyxlsb >=1.0.8
+    - scipy
+    - tabulate
+    - typing-extensions
+    - xlrd >=2.0.1
+    - xlsxwriter
+    - python-calamine
+
+tests:
+  - python:
+      imports:
+        - astronomia
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}
+    script:
+      - solstice --help
+      - check_perihelion --help
+      - cronus --help
+
+about:
+  summary: Library for calculation of ephemeris and other astronomical calculations
+  license: GPL-2.0-or-later
+  license_file: LICENSE.txt
+  homepage: https://timcera.bitbucket.io/astronomia/docs/index.html
+
+extra:
+  recipe-maintainers:
+    - timcera
