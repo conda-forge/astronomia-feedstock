@@ -13,7 +13,7 @@ source:
   sha256: c6bb28769848bb2f20b1eb92654c440b673dec69db90458386fdc9264840b990
 
 build:
-  number: 1
+  number: 2
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps
   python:
@@ -29,7 +29,7 @@ requirements:
     - setuptools-scm >=6.2
     - pip
   run:
-    - python >=${{ python_min }}
+    - python >=3.10
     - cltoolbox
     - dateparser
     - matplotlib-base >=3.3.2
